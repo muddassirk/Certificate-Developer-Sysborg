@@ -72,6 +72,20 @@ app.use((req, res, next) => {
 app.use("/", express.static(path.resolve(path.join(__dirname, "../web/build"))));
 app.use("/auth", authRoutes)
 
+app.get("/getStudentDetails", (req, res, next) => {
+
+    studentDetailModel.find({}, (err, data) => {
+        if (!err) {
+            // console.log("data is orders = > " , data);
+            res.status(200).send({
+                Details: data,
+            });
+        } else {
+            console.log("error : ", err);
+            res.status(500).send("error");
+        }
+    })
+});
 
 app.use(function(req, res, next) {
     console.log("req.cookies: ", req.cookies)
@@ -197,20 +211,6 @@ app.post("/uploadStudenDetail", upload.any(), (req, res, next) => {
 })
 
 
-app.get("/getStudentDetails", (req, res, next) => {
-
-    studentDetailModel.find({}, (err, data) => {
-        if (!err) {
-            // console.log("data is orders = > " , data);
-            res.status(200).send({
-                Details: data,
-            });
-        } else {
-            console.log("error : ", err);
-            res.status(500).send("error");
-        }
-    })
-});
 
 
 
