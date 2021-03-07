@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import QRCode from 'qrcode.react'
 import axios from "axios"
 import {
     BrowserRouter as Router,
@@ -6,6 +7,7 @@ import {
     Link,
     Route
 } from 'react-router-dom'
+// var QRCode = require('qrcode.react');
 
 import { Card, ListGroupItem, ListGroup } from "react-bootstrap"
 
@@ -35,7 +37,7 @@ function Home() {
                 // console.log("response", res.data.Details);
                 // console.log("response", res.data.Details[0].studentName);
                 setNewPosts(res.data.Details)
-                // console.log(newposts);
+                console.log(newposts);
 
             });
 
@@ -88,51 +90,78 @@ function Home() {
 
                         return (
 
-                                <div key={index} className='w-100'>
-                                            <div className="post-bar">
-                                                <div className="post_topbar">
-                                                    <div className="usy-dt">
-                                                        <img  style={{ width: "100px" }} 
-                                                         src={value.studentDp} alt="" />
-                                                        <div className="usy-name">
-                                                            <h3>{value.studentName}</h3>
-                                                            <h3>{value.studentEmail}</h3>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div className="epi-sec">
-                                                    <ul className="descp">
-                                                        {/* <li>Epic Coder</li> */}
-                                                        <li>Pakistan</li>
-                                                    </ul>
-                                                    <ul className="bk-links">
-                                                        <li>Space for QR Code</li>
-                                                        <li></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="job_descp">
-                                                    <h3>{value.studentCertificate}</h3>
-                                                    <ul className="job-dt">
-                                                        <li><a href="#" title>Experience</a></li>
-                                                        <li><span>{value.studentExperience}</span></li>
-                                                    </ul>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title>view more</a></p>
-                                                    {/* <ul className="skill-tags">
-                                                    <li><a href="#" title>HTML</a></li>
-                                                    <li><a href="#" title>CSS</a></li>
-                                                    <li><a href="#" title>Javascript</a></li>
-                                                    <li><a href="#" title>Node.js</a></li>
-                                                    <li><a href="#" title>React</a></li>
-                                                    <li><a href="#" title>React Native</a></li>
-                                                </ul> */}
-                                                </div>
-
+                            <div key={index} className='w-100 mx-auto'>
+                                <div className="post-bar">
+                                    <div className="post_topbar">
+                                        <div
+                                        style={{
+                                            display:"flex",
+                                            justifyContent:"space-between"                                            
+                                        }}>
+                                            <div>
+                                            <img style={{ width: "125px", borderRadius:"50%" }}
+                                                src={value.studentDp} alt="" />
+                                            <div className="usy-name">
+                                                <h3>{value.studentName}</h3>
+                                                <h3>{value.studentEmail}</h3>
                                             </div>
+                                            </div>
+                                            <div >
+                                                <QRCode
+                                                    value={"http://picturesofpeoplescanningqrcodes.tumblr.com/"}
+                                                    size={128}
+                                                    bgColor={"#ffffff"}
+                                                    fgColor={"#000000"}
+                                                />
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <div className="epi-sec">
+                                        <ul className="descp">
+                                            <li>Pakistan</li>
+                                        </ul>
+                                        {/* <ul className="bk-links mb-4">
+                                            <li>Space for QR Code</li>
+                                            <li>
+                                                <QRCode
+                                                    value={"http://picturesofpeoplescanningqrcodes.tumblr.com/"}
+                                                    size={128}
+                                                    bgColor={"#ffffff"}
+                                                    fgColor={"#000000"}
+                                                />
+                                            </li>
+                                        </ul> */}
+                                    </div>
+                                    <div className="job_descp">
+                                        <div style={{lineHeight:"1.4em"}}>
+                                        <h6>Course Title: </h6>
+                                        <h6>Issue Date: {value.studentGrandDate} </h6>
+                                        <h6>Expiry Data: {value.studentExpireDate}</h6>
+                                        </div>
+                                        <ul className="job-dt">
+                                            <li><a >Experience</a></li>
+                                            <li><span>{value.studentExperience}</span></li>
+                                        </ul>
+                                        <p>     
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                            luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... 
+                                            {/* <a href="#" title>view more</a> */}
+                                            </p>
+                                        <ul className="skill-tags">
+                                                    <li><a>HTML</a></li>
+                                                    <li><a>CSS</a></li>
+                                                    <li><a>Javascript</a></li>
+                                                    <li><a>Node.js</a></li>
+                                                    <li><a>React</a></li>
+                                                    <li><a>React Native</a></li>
+                                        </ul>
+                                    </div>
 
                                 </div>
+
+
+                            </div>
 
 
 
