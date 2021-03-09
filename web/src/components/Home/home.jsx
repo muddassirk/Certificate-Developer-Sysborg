@@ -26,6 +26,8 @@ function Home() {
 
 
     const [newposts, setNewPosts] = React.useState([]);
+    const [searchEmail, setsearchEmail] = React.useState('');
+    console.log(searchEmail);
 
 
     React.useEffect(() => {
@@ -38,17 +40,27 @@ function Home() {
                 // console.log("response", res.data.Details[0].studentName);
                 setNewPosts(res.data.Details)
                 console.log(newposts);
+                // console.log(newposts[0].studentEmail);
+            
 
             });
+
+            
 
 
 
     }, []);
 
-    // const [forImg, setForImg] = React.useState()
-    // var imgDp = React.useRef()
+    newposts.map((value,index)=>{
+        
+            console.log(value.studentEmail);
+        
+    })
 
-    // setForImg([...forImg, imgDp.current.value])
+    function seachBar(e){
+
+    }
+
 
 
 
@@ -71,7 +83,8 @@ function Home() {
                         </div>
                         <div className="col-md-6">
                             <div className="search">
-                                <input type="text" placeholder="Search" />
+                                {/* <input type="text" placeholder="Search" onChange={(e)=>console.log(e.target.value)}/> */}
+                                <input type="text" placeholder="Search" onChange={(e)=>setsearchEmail(e.target.value)}/>
                                 <button><i className="fa fa-search"></i></button>
                             </div>
                         </div>
@@ -85,12 +98,22 @@ function Home() {
 
             <div className="container">
 
+
+            {
+
+            }
+
+
+
+
+
+
                 {
                     newposts.map((value, index) => {
 
                         return (
 
-                            <div key={index} className='w-100 mx-auto'>
+                            <div key={index} className='w-75 mx-auto'>
                                 <div className="post-bar">
                                     <div className="post_topbar">
                                         <div
@@ -108,7 +131,7 @@ function Home() {
                                             </div>
                                             <div >
                                                 <QRCode
-                                                    value={"http://picturesofpeoplescanningqrcodes.tumblr.com/"}
+                                                    value={"https://facebook.com/muddassir.perfect"}
                                                     size={128}
                                                     bgColor={"#ffffff"}
                                                     fgColor={"#000000"}

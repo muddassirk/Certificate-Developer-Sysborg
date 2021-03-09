@@ -49,8 +49,8 @@ function App() {
     <div>
       <Router>
 
-        <div className="nav container-fluid">
-          <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+        <div className="nav container-fluid w-100">
+          <nav className="navbar navbar-expand-md bg-dark navbar-dark w-100" >
             <a href="#" className="navbar-brand">MENU</a>
             <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
               <span className="navbar-toggler-icon"></span>
